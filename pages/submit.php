@@ -9,8 +9,11 @@ if (isset($_POST['type']) && $_POST["type"] === "login") {
 } elseif (isset($_POST['type']) && $_POST["type"] === "reset") {
     resetPassword();
 } elseif (isset($_POST['type']) && $_POST["type"] === "password-reset") {
-//    var_dump($_REQUEST);
     updatePassword();
+} 
+elseif (isset($_POST['type']) && $_POST["type"] === "edit-post") {
+    editPost();
+    
 }
 
 
@@ -39,7 +42,7 @@ function register(): void
             $sql = "insert into user1(username,email,password) values('$username','$email','$hashed')";
             $result = $connection->query($sql);
             if ($result){
-                header("Location: login.php");
+                header("Location:?route=login");
             }else{
                 $error[] ="unable to create your account ";
                 $_SESSION['error'] = json_encode($error);
@@ -81,14 +84,14 @@ function login()
     $sql="SELECT username ,password from user1 Where username='$username'AND password='$password'";
     $result=$connection->query($sql);
     if ($result->num_rows>0) {
-       header('location:home.php');
+       header('location:?route=home');
        $_SESSION['name']=$username;
 
     }else{
 
         $error[]="Username and Password Not Matched";
         $_SESSION['error'] = json_encode($error);
-        header('location:login.php');
+        header('location:?route=login');
     }
 }
 }
@@ -103,7 +106,7 @@ function resetPassword()
         $token = sha1(microtime());
         $query = "insert into reset_token(email,token) values('$email','$token')";
         $result = $connection->query($query);
-        $link = "/reset.php?token=$token";
+        $link = "?route=reset?token=$token";
         $_SESSION['error'] = json_encode(["Reset Link has Been Sent " . $link]);
         header("location: " . $_SERVER['HTTP_REFERER']);
     } else {
@@ -122,6 +125,23 @@ function updatePassword(): void
     $query = "UPDATE user1 SET password='$password' WHERE email='$email'";
     var_dump($query);
     $result = $connection->query($query);
-    header("location: login.php");
+    header("location:?route=login");
+}
+
+function editPost(){
+    global $connection;
+    $content = $_POST['content'];
+    $title = $_POST['title'];
+    var_dump($_POST['title']);
+    $postId = $_POST['post-id'];
+    $query = "update post set title='$title',content='$content' where id = '$postId'";
+    $result = $connection->query($query);
+
+    if($result){
+        header("location:?route=home" );
+    }
+    else{
+        die("Unable to update ur post");
+    }
 }
 

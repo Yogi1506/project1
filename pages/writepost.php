@@ -1,5 +1,4 @@
 <?php
-session_start();
 if(!isset($_SESSION['name'])){
     header('location:login.php');
 }
@@ -17,7 +16,7 @@ if(!isset($_SESSION['name'])){
 </head>
 <body>
 <div class="container">
-<?php include "error.php"; ?>
+<?php include "partials/error.php"; ?>
 
     <form enctype="multipart/form-data" method="POST" action="">
         <div class="form-group mt-2">
@@ -57,12 +56,12 @@ if(move_uploaded_file($_FILES['banner']['tmp_name'],$target.basename($_FILES['ba
 $sql="INSERT INTO `post`( `user_id`, `title`, `content`, `banner`) VALUES ('$id','$title','$content','$picture')";
 $result=$conn->query($sql);
 if($result){
-    header('location:home.php');
+    header('location:?route=home');
 
 }else{
     $error[]="File not Moved";
     $_SESSION['error'] = json_encode($error);
-    header('location:write post.php'); 
+    header('location:?route=writepost'); 
 }
 
 

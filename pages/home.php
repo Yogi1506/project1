@@ -1,8 +1,7 @@
 <?php
-session_start();
 if(!$_SESSION['name'])
 {
-    header('Location:login.php');
+    header('Location:?route=login');
 }
 $connection = new mysqli("localhost", "root", "", "blog");
 
@@ -40,14 +39,14 @@ $id= $num["user_id"];
 
     <header class="bg-dark text-white text-center py-5 position-relative">
     
-<a href="logout.php" name='logout' class="btn btn-primary logout-button">Log Out</a>
+<a href="pages/logout.php" name='logout' class="btn btn-primary logout-button">Log Out</a>
         <h1>Welcome to  Homepage <?php echo $_SESSION['name'];?></h1>
     
     </header>
 
     <br>
-    <a href="profile.php?id=<?php echo $id ?>" name='logout' class="btn btn-danger ">Profile</a>
-<a href="write post.php"><button class="btn btn-warning" type="button">Click HERE to Create Your Blog</button></a>
+    <a href="?route=mypage?id=<?php echo $id ?>" name='logout' class="btn btn-danger ">Profile</a>
+<a href="?route=writepost"><button class="btn btn-warning" type="button">Click HERE to Create Your Blog</button></a>
 <br>
 <br>
     

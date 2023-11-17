@@ -6,17 +6,20 @@ session_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" 
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php include "partials/meta.php"; ?>
     <title>Register</title>
-    <link rel = "stylesheet" href= https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css>
 </head>
 <body>
+<?php include "components/header.php"; ?>
     <div class = "container mt-5 w-50">
         <div class = "card">
             <div class = "card-header text-center"><h2>Sign up</h2></div>
             <div class = "card-body">
-                <?php include 'error.php'; ?>
-                <form action = "submit.php" method = "POST">
+            <?php include "partials/error.php"; ?>
+                <form action = "pages/submit.php" method = "POST">
                     <div class = "form-group mt-2">
                         <label for = "username">Username</label>
                         <input type = "text" class = "form-control" name = "username" id = "username" placeholder = "Enter your username">
@@ -35,7 +38,7 @@ session_start();
                     </div>
                     <input type="text" value="register" name="type" hidden>
                     <input type = "submit" name="submit" class= "btn btn-primary mt-2 w-100" value = "sign up">
-                    <p>Already have a account? <a href= "login.php">click here</a> to log in.</p>
+                    <p>Already have a account? <a href= "?route=login">click here</a> to log in.</p>
 
                 </form>
             </div>

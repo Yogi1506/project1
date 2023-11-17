@@ -12,10 +12,10 @@ if(isset($_GET['token'])){
         $email = $result->fetch_all()[0][1];
     }
     else{
-        header("Location: login.php");
+        header("Location:?route=login");
     }
 }else{
-    header("Location: login.php");
+    header("Location:?route=login");
 }
 ?>
 
@@ -36,7 +36,7 @@ if(isset($_GET['token'])){
                 <div class="card-header">Reset</div>
                 <div class="card-body">
                     <?php include 'error.php'; ?>
-                    <form method="post" action="submit.php">
+                    <form method="post" action="pages/submit.php">
                         <div class="form-group">
                             <label for="username">Password</label>
                             <input type="password" name="username" class="form-control" id="username" placeholder="Enter your username">
