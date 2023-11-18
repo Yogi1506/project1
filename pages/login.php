@@ -21,7 +21,7 @@
             <div class = "card-header text-center"><h2>Login</h2></div>
             <div class = "card-body">
             <?php include "partials/error.php"; ?>
-                <form action = "submit.php" method = "POST">
+                <form action = "?route=submit" method = "POST">
                     <div class = "form-group mt-2">
                         <label for = "username">Username</label>
                         <input type = "text" class = "form-control" name = "username" id = "username" placeholder = "Enter your username">

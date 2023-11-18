@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 //unset($_SESSION['error']);
 $connection = new mysqli("localhost", "root", "", "blog");
 if (isset($_POST['type']) && $_POST["type"] === "login") {

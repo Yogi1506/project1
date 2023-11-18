@@ -45,7 +45,7 @@ $id= $num["user_id"];
     </header>
 
     <br>
-    <a href="?route=mypage?id=<?php echo $id ?>" name='logout' class="btn btn-danger ">Profile</a>
+    <a href="?route=mypage&id=<?php echo $id ?>" name='logout' class="btn btn-danger ">Profile</a>
 <a href="?route=writepost"><button class="btn btn-warning" type="button">Click HERE to Create Your Blog</button></a>
 <br>
 <br>

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['name'])) {
-    header("location:?route=login");
+    header("location: /route=login");
 }
 $username = $_SESSION['name'];
 $postId = $_GET['id'];

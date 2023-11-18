@@ -4,21 +4,21 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link active" href="?route=home">Home</a>
                 </li>
 
                 <?php
                 if(!isset($_SESSION['name'])){ ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="login.php">Login</a>
+                        <a class="nav-link" href="?route=login">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="register.php">Register</a>
+                        <a class="nav-link" href="?route=register">Register</a>
                     </li>
 
                 <?php }; ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="writepost.php">Write</a>
+                    <a class="nav-link" href="?route=writepost">Write</a>
                 </li>
                 <?php
 
@@ -44,7 +44,7 @@ if (isset($_SESSION['name'])) {
             ?>
             <div>
             <a href='#' class='btn btn-primary'><?php echo $username; ?></a>
-                <a href='submit.php?type=logout' class='btn btn-danger'> Logout</a>
+                <a href='?route=logout' class='btn btn-danger'> Logout</a>
             
             </div>
             <?php }?>
@@ -58,6 +58,6 @@ if (isset($_SESSION['name'])) {
 
 if(isset($_POST['search'])){
     $name = $_POST['username'];
-    header("location:search.php?name=" . urlencode($name));
+    header("location:?route=search&name=" . urlencode($name));
     exit();
 }?>

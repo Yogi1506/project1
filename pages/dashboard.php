@@ -32,7 +32,7 @@
         echo "<tr>";
         echo "<td>".$row['id']."</td>";
         echo "<td>".$row['title']."</td>";
-        echo "<td>".substr($row['content'],0, 50)."....."."<a href='?route=blog?id=$row[id]'"."class='btn btn-primary'>"."Read More"."</a>"."</td>";
+        echo "<td>".substr($row['content'],0, 50)."....."."<a href='/route=blog?id=$row[id]'"."class='btn btn-primary'>"."Read More"."</a>"."</td>";
         echo "<td><img src ='".$row['banner']."' height = '100px' width = '150px'></td>";
         echo "<td>".$row['created_at']."</td>";
         echo "</tr>";
